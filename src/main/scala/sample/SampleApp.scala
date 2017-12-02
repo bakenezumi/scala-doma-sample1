@@ -20,7 +20,7 @@ object SampleApp extends App {
       dao
         .selectById(ID.of(2))
         .map { emp =>
-          dao.update(emp.grawOld())
+          dao.update(emp.grawOld)
         }
     println(updated) // => Optional[Result(entity=Emp(id=ID(2), name=allen, age=21, version=2), count=1)]
     val list = dao.selectAll()

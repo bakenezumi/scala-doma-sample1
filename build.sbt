@@ -1,5 +1,9 @@
 import Dependencies._
 
+// for Doma annotation processor
+compile in Compile := ((compile in Compile) dependsOn (copyResources in Compile)).value
+compileOrder := CompileOrder.JavaThenScala
+
 lazy val root = (project in file(".")).
   settings(
     inThisBuild(List(
@@ -11,9 +15,5 @@ lazy val root = (project in file(".")).
     libraryDependencies ++= Seq(
       "org.seasar.doma" % "doma" % "2.19.0",
       "com.h2database" % "h2" % "1.4.193"
-    ),
-    // for Doma annotation processor
-    compile in Compile := ((compile in Compile) dependsOn (copyResources in Compile)).value,
-    compileOrder := CompileOrder.JavaThenScala
+    )
   )
-
