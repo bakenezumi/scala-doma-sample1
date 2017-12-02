@@ -36,4 +36,10 @@ public class Emp implements Serializable {
   public String toString() {
     return (String.format("Emp(id=%s, name=%s, age=%d, version=%d)", id, name, age, version));
   }
+
+  /* 年齢 +1 */
+  public Emp grawOld() {
+    return new Emp(id, name, age + 1, version);
+  }
+
 }

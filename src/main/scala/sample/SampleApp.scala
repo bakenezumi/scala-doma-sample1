@@ -19,15 +19,9 @@ object SampleApp extends App {
     val updated: Optional[Result[Emp]] = // 型推論がうまく効かないので指定する必要がある
       dao
         .selectById(ID.of(2))
-        .map(emp => {
-          val newEntity = new Emp(
-            emp.id,
-            emp.name,
-            emp.age + 1,
-            emp.version
-          )
-          dao.update(newEntity)
-        })
+        .map { emp =>
+          dao.update(emp.grawOld())
+        }
     println(updated) // => Optional[Result(entity=Emp(id=ID(2), name=allen, age=21, version=2), count=1)]
     val list = dao.selectAll()
     list.forEach(println)
