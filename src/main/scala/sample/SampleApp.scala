@@ -11,12 +11,14 @@ object SampleApp extends App {
 
   tx.required({ () =>
     dao.create() // create table
-    val emp1 = new Emp(NOT_ASSIGNED_EMP_ID, "scott", 10, INITIAL_VERSION)
-    dao.insert(emp1)
-    val emp2 = new Emp(NOT_ASSIGNED_EMP_ID, "allen", 20, INITIAL_VERSION)
-    dao.insert(emp2)
+    Seq(
+      new Emp(NOT_ASSIGNED_EMP_ID, "scott", 10, INITIAL_VERSION),
+      new Emp(NOT_ASSIGNED_EMP_ID, "allen", 20, INITIAL_VERSION)
+    ).map {
+      dao.insert
+    }
     // idが2のEmpのageを +1
-    val updated: Optional[Result[Emp]] = // 型推論がうまく効かないので指定する必要がある
+    val updated: Optional[Result[Emp]] = // JavaのOptionalを利用する場合型推論が効かないので明示する
       dao
         .selectById(ID.of(2))
         .map { emp =>
