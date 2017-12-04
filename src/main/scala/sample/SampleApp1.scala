@@ -3,7 +3,7 @@ package sample
 import java.util.Optional
 import org.seasar.doma.jdbc.Result
 
-object SampleApp extends App {
+object SampleApp1 extends App {
   lazy val dao: EmpDao = new EmpDaoImpl()
   lazy val tx = AppConfig.singleton.getTransactionManager
   lazy val NOT_ASSIGNED_EMP_ID = ID.of[Emp](-1)
