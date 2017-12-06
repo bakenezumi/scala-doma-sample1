@@ -15,7 +15,3 @@ lazy val root = (project in file(".")).
       "com.h2database" % "h2" % "1.4.193"
     )
   )
-
-// for Doma annotation processor
-compile in Compile := ((compile in Compile) dependsOn (copyResources in Compile)).value
-compileOrder := CompileOrder.JavaThenScala
