@@ -23,6 +23,11 @@ public class Emp implements Serializable {
     this.version = version;
   }
 
+  /* 年齢 +1 */
+  public Emp grawOld() {
+    return new Emp(id, name, age + 1, version);
+  }
+
   @Override
   public boolean equals(Object obj) {
     if(obj instanceof Emp) {
@@ -32,14 +37,10 @@ public class Emp implements Serializable {
       return false;
     }
   }
+
   @Override
   public String toString() {
     return (String.format("Emp(id=%s, name=%s, age=%d, version=%d)", id, name, age, version));
-  }
-
-  /* 年齢 +1 */
-  public Emp grawOld() {
-    return new Emp(id, name, age + 1, version);
   }
 
 }
