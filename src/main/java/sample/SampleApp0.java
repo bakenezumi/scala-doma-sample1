@@ -17,20 +17,19 @@ public class SampleApp0 {
       final List<Result<Emp>> inserted = Stream.of(
         new Emp(ID.of(-1), "scott", 10, -1),
         new Emp(ID.of(-1), "allen", 20, -1)
-      ).map(
-        dao::insert
-      ).collect(Collectors.toList());
+      ).map(dao::insert)
+        .collect(Collectors.toList());
       System.out.println(inserted);
+
       // idが2のEmpのageを +1
       final Optional<Result<Emp>> updated =
         dao
           .selectById(ID.of(2))
-          .map(emp ->
-            dao.update(emp.grawOld())
-          );
+          .map(Emp::grawOld)
+          .map(dao::update);
       System.out.println(updated);
-      final List<Emp> list = dao.selectAll();
-      list.forEach(System.out::println);
+
+      dao.selectAll().forEach(System.out::println);
       // =>
       //   Emp(id=ID(1), name=scott, age=10, version=1)
       //   Emp(id=ID(2), name=allen, age=21, version=2)
