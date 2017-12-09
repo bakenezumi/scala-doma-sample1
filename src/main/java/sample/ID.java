@@ -6,7 +6,6 @@ import java.io.Serializable;
 
 @Domain(valueType = long.class, factoryMethod = "of")
 public final class ID<ENTITY> implements Serializable {
-  private static final long serialVersionUID = 1L;
   private final long value;
 
   private ID(final long value) {
@@ -30,4 +29,7 @@ public final class ID<ENTITY> implements Serializable {
   public String toString() {
     return (String.format("ID(%d)", value));
   }
+
+  private static final long serialVersionUID = 1L;
+
 }

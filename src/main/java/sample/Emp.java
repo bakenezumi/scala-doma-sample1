@@ -5,8 +5,6 @@ import java.io.Serializable;
 
 @Entity(immutable = true)
 public class Emp implements Serializable {
-  private static final long serialVersionUID = 1L;
-
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   @SequenceGenerator(sequence = "emp_id_seq")
@@ -42,5 +40,7 @@ public class Emp implements Serializable {
   public String toString() {
     return (String.format("Emp(id=%s, name=%s, age=%d, version=%d)", id, name, age, version));
   }
+
+  private static final long serialVersionUID = 1L;
 
 }
